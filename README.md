@@ -2,7 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, create /.env.local - and provide your REDIS_URL and OpenAI API key
+```md
+REDIS_URL= // Your url goes here
+OPENAI_API_KEY= // Your API key goes here
+```
+
+Second, run the development server:
 
 ```bash
 npm run dev
