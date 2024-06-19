@@ -16,8 +16,7 @@ export default function Home() {
     type: "success" | "error";
   } | null>(null);
 
-
-  async function handleGenerate () {
+  async function handleGenerate() {
     setError("");
     setSavedId("");
     setImageUrl("");
@@ -40,19 +39,24 @@ export default function Home() {
 
       if (res.ok) {
         setResponse(data.text);
-        setAlert({ message: "New conspiracy theory unlocked!", type: "success" });
+        setAlert({
+          message: "New conspiracy theory unlocked!",
+          type: "success",
+        });
       } else {
         setError(data.error);
         setAlert({ message: data.error, type: "error" });
-
       }
     } catch (err) {
       setError("An error occurred while generating the theory.");
-      setAlert({ message: "Apparently this is not a conspiracy theory.", type: "error" });
+      setAlert({
+        message: "Apparently this is not a conspiracy theory.",
+        type: "error",
+      });
     }
-  };
+  }
 
-  async function handleSave () {
+  async function handleSave() {
     setError("");
     try {
       const res = await fetch("/api/save", {
@@ -65,18 +69,25 @@ export default function Home() {
 
       if (res.ok) {
         setSavedId(data.id);
-        setAlert({ message: "Theory archived, it is now stored eternally. Or until my free credits run out.", type: "success" });
+        setAlert({
+          message:
+            "Theory archived, it is now stored eternally. Or until my free credits run out.",
+          type: "success",
+        });
       } else {
         setError(data.error);
         setAlert({ message: data.error, type: "error" });
       }
     } catch (err) {
       setError("An error occurred while saving the theory.");
-      setAlert({ message: "An error occured while saving the theory.", type: "error" });
+      setAlert({
+        message: "An error occured while saving the theory.",
+        type: "error",
+      });
     }
-  };
+  }
 
-  async function handleGenerateImage () {
+  async function handleGenerateImage() {
     setError("");
     setLoadingImage(true);
     try {
@@ -94,15 +105,17 @@ export default function Home() {
       } else {
         setError(data.error);
         setAlert({ message: data.error, type: "error" });
-
       }
     } catch (err) {
       setError("An error occurred while generating the evidence.");
-      setAlert({ message: "This image is too haunting to show you.", type: "error" });
+      setAlert({
+        message: "This image is too haunting to show you.",
+        type: "error",
+      });
     } finally {
       setLoadingImage(false);
     }
-  };
+  }
 
   return (
     <div className="min-h-96 flex flex-col items-center justify-center py-30">
@@ -130,7 +143,9 @@ export default function Home() {
       {response && (
         <div className="mt-4 w-1/2">
           <h2 className="text-2xl mb-4">Theory explained</h2>
-          <p className="border border-gray-300 p-4 hover:animate-pulse">{response}</p>
+          <p className="border border-gray-300 p-4 hover:animate-pulse">
+            {response}
+          </p>
 
           <input
             type="text"
