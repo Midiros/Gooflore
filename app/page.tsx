@@ -49,7 +49,7 @@ export default function Home() {
 
       }
     } catch (err) {
-      setError("An error occurred while generating the response.");
+      setError("An error occurred while generating the theory.");
       setAlert({ message: "Apparently this is not a conspiracy theory.", type: "error" });
     }
   };
@@ -73,8 +73,8 @@ export default function Home() {
         setAlert({ message: data.error, type: "error" });
       }
     } catch (err) {
-      setError("An error occurred while saving the response.");
-      setAlert({ message: "An error occured while saving the response.", type: "error" });
+      setError("An error occurred while saving the theory.");
+      setAlert({ message: "An error occured while saving the theory.", type: "error" });
     }
   };
 
@@ -99,7 +99,7 @@ export default function Home() {
 
       }
     } catch (err) {
-      setError("An error occurred while generating the image.");
+      setError("An error occurred while generating the evidence.");
       setAlert({ message: "This image is too haunting to show you.", type: "error" });
     } finally {
       setLoadingImage(false);

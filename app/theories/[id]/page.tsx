@@ -55,7 +55,7 @@ export default function TheoryPage() {
         />
       )}
       {loading ? (
-        <p>Loading...</p>
+        <p className="text-white animate-pulse">Loading theory...</p>
       ) : error ? (
         <p className="text-red-500">{error}</p>
       ) : (

@@ -8,13 +8,13 @@ export default function Navbar() {
           href="/"
           className="text-white hover:text-grey-100 ease-in-out duration-100 hover:animate-pulse"
         >
-          Generate Theory
+          Begin a theory
         </Link>
         <Link
           href="/theories"
           className="text-white hover:text-grey-100 ease-in-out duration-100 hover:animate-pulse"
         >
-          List All Theories
+          Reveal the secrets
         </Link>
       </div>
     </nav>

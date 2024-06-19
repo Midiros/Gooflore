@@ -6,10 +6,10 @@ export async function POST(request: Request) {
 
   try {
     const response = await openai.chat.completions.create({
-      messages: [{ role: "system", content: "You are a creative author that makes up conspiracy theories based on the user's prompt. Keep the answer to 200 characters or less. Don't end mid sentence."},
+      messages: [{ role: "system", content: "You are a creative author that makes up wild conspiracy theories based on the user's prompt. Keep the answer to 200 characters or less. Don't end mid sentence."},
                 {role: "user", content: prompt}],
-      model: "gpt-3.5-turbo",
-      max_tokens: 100,
+                model: "gpt-3.5-turbo",
+                max_tokens: 100,
     });
 
     return NextResponse.json({ text: response.choices[0]!.message?.content});

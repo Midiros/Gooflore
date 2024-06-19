@@ -23,10 +23,10 @@ export async function POST(request: Request) {
       created_at: createdAt,
     };
     await redis!.set(id, JSON.stringify(item)); // Store the item under the id key
-    return NextResponse.json({ message: "Saved successfully", id, data: item });
+    return NextResponse.json({ message: "Theory saved successfully", id, data: item });
   } catch (error) {
     return NextResponse.json(
-      { error: "Error saving response" },
+      { error: "Failed saving theory." },
       { status: 500 }
     );
   }

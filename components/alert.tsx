@@ -17,7 +17,7 @@ export default function Alert({ message, type, onClose }: AlertProps) {
 
   return (
     <div
-      className={`fixed top-4 right-4 max-w-sm w-full z-50 p-4 rounded shadow-lg flex items-center ${
+      className={`fixed top-4 right-4 max-w-sm w-full z-50 p-4 rounded shadow-lg flex items-center my-16 ${
         type === 'success' ? 'bg-green-500' : 'bg-red-500'
       } text-white`}
     >
