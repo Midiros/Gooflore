@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       author,
       created_at: createdAt,
     };
-    await redis!.set(id, JSON.stringify(item)); // Store the item under the id key
+    await redis!.set(id, JSON.stringify(item)); // Uloz zaznam s vygenerovanym UUIDckem
     return NextResponse.json({ message: "Theory saved successfully", id, data: item });
   } catch (error) {
     return NextResponse.json(

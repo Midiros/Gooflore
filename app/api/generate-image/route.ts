@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     try {
         const response = await openai.images.generate({
           model: "dall-e-3",
-          prompt: theory + "The image evidence should be goofy and very funny.",
+          prompt: theory + "The image evidence should be goofy and very funny and als done in pixelart.",
           n: 1,
           size: "1024x1024",
         });

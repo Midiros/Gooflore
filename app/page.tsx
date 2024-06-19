@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import Alert from "@/components/alert";
+import Image from "next/image";
 
+// Main module for the app
 export default function Home() {
   const [prompt, setPrompt] = useState<string>("");
   const [response, setResponse] = useState<string>("");
@@ -16,6 +18,7 @@ export default function Home() {
     type: "success" | "error";
   } | null>(null);
 
+  // Handle the generation of the theory based on the prompt
   async function handleGenerate() {
     setError("");
     setSavedId("");
@@ -56,6 +59,7 @@ export default function Home() {
     }
   }
 
+  // Handle the saving of the theory to the database after clicking the archive button
   async function handleSave() {
     setError("");
     try {
@@ -87,6 +91,7 @@ export default function Home() {
     }
   }
 
+  // Handle the generation of the image
   async function handleGenerateImage() {
     setError("");
     setLoadingImage(true);
@@ -117,8 +122,16 @@ export default function Home() {
     }
   }
 
+  // Body of the main page
   return (
     <div className="min-h-96 flex flex-col items-center justify-center py-30">
+      <Image
+        src="/goofler_logo.png"
+        width={300}
+        height={300}
+        alt="website logo"
+        className="hover:animate-pulse w-[15%] h-[15%] stroke-grey-900 my-8"
+      />
       <h1 className="text-4xl mb-8">Goofer's theory machine</h1>
       {alert && (
         <Alert
@@ -140,6 +153,7 @@ export default function Home() {
       >
         Explain this
       </button>
+      {/* if a theory is generated display the components bellow, essentialy vyhodnoceni podminky a nastavovani vsech component unvitr visibility 0/100% */}
       {response && (
         <div className="mt-4 w-1/2">
           <h2 className="text-2xl mb-4">Theory explained</h2>
