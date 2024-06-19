@@ -16,6 +16,17 @@
   }
 }
 
+@font-face {
+  font-family: Iosevka;
+  src: url('/fonts/IosevkaSlab-Regular.ttf');
+}
+
+* {
+  font-family: Iosevka;
+}
+
+
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(

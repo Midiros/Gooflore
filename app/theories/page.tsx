@@ -1,10 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import Alert from "@/components/alert";
 
 export default function Theories() {
   const [theories, setTheories] = useState<Array<Record<string, string>>>([]);
   const [error, setError] = useState<string>("");
+  const [alert, setAlert] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
 
   useEffect(() => {
     const fetchTheories = async () => {
@@ -14,11 +20,18 @@ export default function Theories() {
 
         if (res.ok) {
           setTheories(data);
+          setAlert({
+            message: "Theories loaded successfully!",
+            type: "success",
+          });
         } else {
           setError(data.error);
+          setAlert({ message: data.error, type: "error" });
         }
       } catch (err) {
-        setError("An error occurred while fetching the theories.");
+        const errorMessage = "An error occurred while fetching the theories.";
+        setError(errorMessage);
+        setAlert({ message: errorMessage, type: "error" });
       }
     };
 
@@ -26,27 +39,24 @@ export default function Theories() {
   }, []);
 
   return (
-    <div>
+    <div className="container mx-auto p-4">
       <h1 className="text-4xl mb-8">All Theories</h1>
-      {error && <p className="text-red-500">{error}</p>}
-      <ul>
+      {alert && (
+        <Alert
+          message={alert.message}
+          type={alert.type}
+          onClose={() => setAlert(null)}
+        />
+      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {theories.map((theory) => (
-          <li key={theory.uuid} className="mb-4">
-            <p>
-              <strong>Prompt:</strong> {theory.prompt}
-            </p>
-            <p>
-              <strong>Theory:</strong> {theory.theory}
-            </p>
-            <p>
-              <strong>Author:</strong> {theory.author}
-            </p>
-            <p>
-              <strong>Created At:</strong> {theory.created_at}
-            </p>
-          </li>
+          <Link key={theory.uuid} href={`/theories/${theory.uuid}`}>
+            <div className="bg-white shadow-lg rounded-lg p-6 cursor-pointer card">
+              <h2 className="text-xl font-semibold mb-2">{theory.prompt}</h2>
+            </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

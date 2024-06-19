@@ -10,10 +10,10 @@ export async function POST(request: Request) {
 
     try {
         const response = await openai.images.generate({
-            model: "dall-e-3",
-            prompt: theory,
-            n: 1,
-            size: "1024x1024",
+          model: "dall-e-3",
+          prompt: theory + "The image evidence should be very goofy and very funny.",
+          n: 1,
+          size: "1024x1024",
         });
 
         const imageUrl = response.data[0].url;

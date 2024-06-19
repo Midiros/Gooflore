@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/font": "^14.2.4",
     "@types/uuid": "^9.0.8",
+    "flowbite": "^2.3.0",
     "ioredis": "^5.4.1",
     "next": "14.2.4",
     "openai": "^4.51.0",
