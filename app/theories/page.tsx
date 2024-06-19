@@ -48,11 +48,12 @@ export default function Theories() {
           onClose={() => setAlert(null)}
         />
       )}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-black">
         {theories.map((theory) => (
           <Link key={theory.uuid} href={`/theories/${theory.uuid}`}>
-            <div className="bg-white shadow-lg rounded-lg p-6 cursor-pointer card">
+            <div className=" bg-stone-400 shadow-lg rounded-lg p-6 cursor-pointer card">
               <h2 className="text-xl font-semibold mb-2">{theory.prompt}</h2>
+              <p >{theory.author}</p>
             </div>
           </Link>
         ))}
