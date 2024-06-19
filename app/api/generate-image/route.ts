@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import openai from "../../../lib/openai";
+import openai from "@/lib/openai";
 
 export async function POST(request: Request) {
     const { theory } = await request.json();
@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     try {
         const response = await openai.images.generate({
           model: "dall-e-3",
-          prompt: theory + "The image evidence should be very goofy and very funny.",
+          prompt: theory + "The image evidence should be goofy and very funny.",
           n: 1,
           size: "1024x1024",
         });
